@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSSC Clinic Portal - Student Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230074A6'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E">
+</head>
+<body>
+    <!-- Notification Banner -->
+    <div id="notificationBanner" class="notification-banner" style="display: none;">
+        <div class="notification-content">
+            <span id="notificationText"></span>
+            <button id="closeNotification" class="close-btn">&times;</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <button id="menuToggle" class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="header-title">DSSC Clinic Portal</h1>
+            <div class="header-user">
+                <span id="headerUserName">Student Dashboard</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>Dashboard</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#" data-section="profile" class="menu-item active">
+                <span class="menu-icon">👤</span>Profile
+            </a></li>
+            <li><a href="#" data-section="appointments" class="menu-item">
+                <span class="menu-icon">📅</span>Appointments
+            </a></li>
+            <li><a href="#" data-section="medical-history" class="menu-item">
+                <span class="menu-icon">📋</span>Medical History
+            </a></li>
+            <li><a href="#" data-section="drug-history" class="menu-item">
+                <span class="menu-icon">💊</span>Drug History
+            </a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Profile Section -->
+        <section id="profile" class="section active">
+            <div class="section-header">
+                <h2>Profile Management</h2>
+                <p>Manage your personal information and medical requirements</p>
+            </div>
+            
+            <div class="card">
+                <form id="profileForm">
+                    <!-- Profile Picture Section -->
+                    <div class="profile-picture-section">
+                        <h3>Profile Picture</h3>
+                        <div class="profile-picture-container">
+                            <div class="profile-picture-preview">
+                                <img id="profilePictureImg" src="" alt="Profile Picture" style="display: none;">
+                                <div id="profilePicturePlaceholder" class="profile-picture-placeholder">
+                                    <span class="profile-icon">👤</span>
+                                    <span class="upload-text">Click to upload photo</span>
+                                </div>
+                            </div>
+                            <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
+                            <div class="profile-picture-actions">
+                                <button type="button" id="uploadProfilePicture" class="btn btn-secondary">
+                                    📷 Upload Photo
+                                </button>
+                                <button type="button" id="removeProfilePicture" class="btn btn-danger" style="display: none;">
+                                    🗑️ Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="studentName">Full Name</label>
+                            <input type="text" id="studentName" name="studentName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="studentId">Student ID</label>
+                            <input type="text" id="studentId" name="studentId" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="program">Program</label>
+                            <select id="program" name="program" required>
+                                <option value="">Select Program</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Data Science">Data Science</option>
+                                <option value="Software Engineering">Software Engineering</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <input type="text" id="department" name="department" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="medical-requirements">
+                        <h3>Medical Requirements</h3>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="drugTest" name="drugTest">
+                                <span class="checkmark"></span>
+                                Drug Test Completed
+                            </label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="bloodTyping" name="bloodTyping">
+                                <span class="checkmark"></span>
+                                Blood Typing Done
+                            </label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="cvc" name="cvc">
+                                <span class="checkmark"></span>
+                                CVC Completed
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Save Profile</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Appointments Section -->
+        <section id="appointments" class="section">
+            <div class="section-header">
+                <h2>Appointments</h2>
+                <p>Book new appointments and view your scheduled visits</p>
+            </div>
+            
+            <div class="appointments-container">
+                <div class="card">
+                    <h3>Book New Appointment</h3>
+                    <form id="appointmentForm">
+                        <div class="form-group">
+                            <label for="appointmentType">Appointment Type</label>
+                            <select id="appointmentType" name="appointmentType" required>
+                                <option value="">Select Type</option>
+                                <option value="General Checkup">General Checkup</option>
+                                <option value="Dental Cleaning">Dental Cleaning</option>
+                                <option value="Follow-up">Follow-up</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="appointmentDate">Preferred Date</label>
+                            <input type="date" id="appointmentDate" name="appointmentDate" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="appointmentTime">Preferred Time</label>
+                            <select id="appointmentTime" name="appointmentTime" required>
+                                <option value="">Select Time</option>
+                                <option value="08:00">8:00 AM</option>
+                                <option value="09:00">9:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Book Appointment</button>
+                    </form>
+                </div>
+                
+                <div class="card">
+                    <h3>Your Appointments</h3>
+                    <div id="appointmentsList" class="appointments-list">
+                        <!-- Appointments will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Medical History Section -->
+        <section id="medical-history" class="section">
+            <div class="section-header">
+                <h2>Medical History</h2>
+                <p>Your complete medical records and visit history</p>
+            </div>
+            
+            <div class="card">
+                <div class="table-responsive">
+                    <table id="medicalHistoryTable" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Service</th>
+                                <th>Notes</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="medicalHistoryBody">
+                            <!-- Data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="medicalHistoryCards" class="history-cards">
+                    <!-- Mobile cards will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Drug History Section -->
+        <section id="drug-history" class="section">
+            <div class="section-header">
+                <h2>Drug History</h2>
+                <p>Medications and prescriptions issued by the clinic</p>
+            </div>
+            
+            <div class="card">
+                <div class="table-responsive">
+                    <table id="drugHistoryTable" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Drug Name</th>
+                                <th>Brand</th>
+                                <th>Issued By</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="drugHistoryBody">
+                            <!-- Data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="drugHistoryCards" class="history-cards">
+                    <!-- Mobile cards will be populated here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Overlay for mobile menu -->
+    <div id="overlay" class="overlay"></div>
+
+    <script src="data.js"></script>
+    <script src="utils.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
